@@ -48,16 +48,24 @@ jobs:
 
       - run: brew test-bot --only-setup
 
-      - run: brew test-bot --only-tap-syntax
+      # Not `brew test-bot --only-tap-syntax`: it runs `brew readall --os=all
+      # --arch=all`, which simulates macOS+Intel even though these casks are
+      # intentionally arm64-only on macOS. Homebrew's readall only skips that
+      # combo via `depends_on macos:` (an OS-version bound), never via
+      # `depends_on arch:`, so an arm64-only cask can't satisfy it. `--no-simulate`
+      # checks the runner's actual OS/arch instead, which is what we can support.
+      - name: Style-check casks
+        run: brew style --cask --except-cops=Cask/StanzaOrder,Cask/StanzaGrouping,Layout/EmptyLinesAroundBlockBody "${{ steps.set-up-homebrew.outputs.tap-name }}"
+
+      - name: Readall casks
+        run: brew readall --aliases --no-simulate "${{ steps.set-up-homebrew.outputs.tap-name }}"
 
       - name: Audit casks
-        if: github.event_name == 'pull_request'
         run: brew audit --cask --strict --tap="${{ steps.set-up-homebrew.outputs.tap-name }}"
-
-      - name: Style-check casks
-        if: github.event_name == 'pull_request'
-        run: brew style --cask "${{ steps.set-up-homebrew.outputs.tap-name }}"
 
       - name: Install casks
         if: github.event_name == 'pull_request'
-        run: brew install --cask "${{ steps.set-up-homebrew.outputs.tap-name }}/godl"
+        run: |
+          brew install --cask "${{ steps.set-up-homebrew.outputs.tap-name }}/git-c"
+          brew install --cask "${{ steps.set-up-homebrew.outputs.tap-name }}/git-cl"
+          brew install --cask "${{ steps.set-up-homebrew.outputs.tap-name }}/godl"
