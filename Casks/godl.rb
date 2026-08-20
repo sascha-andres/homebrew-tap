@@ -4,18 +4,18 @@ cask "godl" do
 
   on_macos do
     on_arm do
-      sha256 "e2ba8cde5659a4715a0c9886f00852d6a2d13258fc0636c938e1c03dd9e87105"
+      sha256 "5161b9f7b0d35298424c15c3827f078474b4501854a39e95c2bacebd122646ff"
       url "https://github.com/sascha-andres/godl/releases/download/v#{version}/godl_darwin_arm64.tar.gz"
     end
   end
 
   on_linux do
     on_intel do
-      sha256 "b4bfce7a4bb5c722e3f52e3d49a3667c55c438ea8c9260b9888557937ac1aed6"
+      sha256 "7008009018178a40997e22ac17512c394020aedf4dfca445b5d6a645e408f2d5"
       url "https://github.com/sascha-andres/godl/releases/download/v#{version}/godl_linux_amd64.tar.gz"
     end
     on_arm do
-      sha256 "ad5c805d7ab67a53cbd7d1a03da1cae28d8719b3b9b3cfda0ce482e770afef2d"
+      sha256 "bd68a87781a4f873b4595d0f54950660248a921e88083b3fefe74cb5a74c04e4"
       url "https://github.com/sascha-andres/godl/releases/download/v#{version}/godl_linux_arm64.tar.gz"
     end
   end
