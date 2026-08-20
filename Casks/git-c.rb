@@ -4,18 +4,18 @@ cask "git-c" do
 
   on_macos do
     on_arm do
-      sha256 "cef564babe8e75f5791b30c5c67684dd4b77ef7caa96f474fc9b0d71a9659fef"
+      sha256 "e637db68c39ee918352714fca3f464758ad1a72cbc588ba5cdb68a234eedbac6"
       url "https://github.com/sascha-andres/git-c/releases/download/v#{version}/git-c_darwin_arm64.tar.gz"
     end
   end
 
   on_linux do
     on_intel do
-      sha256 "f6ab3d0245f7d0e1a2d09f4563d45a14e1c6fd64395b1ba777628b91c60b5f78"
+      sha256 "da4712fcd4feaba1e0ee73e6c095b8a3621810ba1dfd24bb0e163fcda74ca244"
       url "https://github.com/sascha-andres/git-c/releases/download/v#{version}/git-c_linux_amd64.tar.gz"
     end
     on_arm do
-      sha256 "d7c6e285db48e75f8d983e90d68bb5b1f5c6d87a97139436615d403c509ce8e1"
+      sha256 "59416c79d293116e758b3a0f89b87d810bcbe3102e2454315882b74f9bb34de1"
       url "https://github.com/sascha-andres/git-c/releases/download/v#{version}/git-c_linux_arm64.tar.gz"
     end
   end
